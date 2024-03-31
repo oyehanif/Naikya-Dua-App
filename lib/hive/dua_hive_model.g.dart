@@ -21,13 +21,14 @@ class DuaHiveModelAdapter extends TypeAdapter<DuaHiveModel> {
       duaName: fields[1] as String,
       dua: fields[2] as String,
       tarjum: fields[3] as String,
+      isFav: fields[4] as bool,
     );
   }
 
   @override
   void write(BinaryWriter writer, DuaHiveModel obj) {
     writer
-      ..writeByte(4)
+      ..writeByte(5)
       ..writeByte(0)
       ..write(obj.id)
       ..writeByte(1)
@@ -35,7 +36,9 @@ class DuaHiveModelAdapter extends TypeAdapter<DuaHiveModel> {
       ..writeByte(2)
       ..write(obj.dua)
       ..writeByte(3)
-      ..write(obj.tarjum);
+      ..write(obj.tarjum)
+      ..writeByte(4)
+      ..write(obj.isFav);
   }
 
   @override

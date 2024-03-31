@@ -17,10 +17,12 @@ class HomeController extends ChangeNotifier {
 
   void getAllDua() async {
     final result = await repo.getDuaList();
+    productList.clear();
     result.when(
         success: (data) {
           if (productList.isEmpty) {
             productList.addAll(data as List<DuaHiveModel>);
+            notifyListeners();
           }
           print("Here Data : ${data.length}");
         },

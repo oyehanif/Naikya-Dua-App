@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../models/CategoryItemModel.dart';
+
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
@@ -9,7 +11,9 @@ class HomeScreen extends StatelessWidget {
     var mediaQuery = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
-        title: InkWell(onTap:() => context.pushNamed("languageSelection"),child: const Text('Naikya')),
+        title: InkWell(
+            onTap: () => context.pushNamed("languageSelection"),
+            child: const Text('Naikya')),
         backgroundColor: Colors.green,
       ),
       body: SingleChildScrollView(
@@ -45,12 +49,21 @@ class HomeScreen extends StatelessWidget {
                     crossAxisCount: 2,
                     crossAxisSpacing: 10,
                     mainAxisSpacing: 10),
-                itemBuilder: (context, index) =>
-                    CategoryItemWidget(name: list[index], onTap: (){
-                      list[index] == 'Dua' ? context.pushNamed('duaList') : context.pushNamed('test',pathParameters: {'test': list[index],});
+                itemBuilder: (context, index) => CategoryItemWidget(
+                    model: list[index],
+                    onTap: () {
+                      if (list[index].name == 'Dua') {
+                        context.pushNamed('duaList');
+                      } else if (list[index].name == 'Qiblah Finder') {
+                        context.pushNamed('qiblah');
+                      } else {
+                        context.pushNamed('test', pathParameters: {
+                          'test': list[index].name,
+                        });
+                      }
                     }),
                 itemCount: list.length,
-                physics:const NeverScrollableScrollPhysics(),
+                physics: const NeverScrollableScrollPhysics(),
                 shrinkWrap: true,
               ),
             )
@@ -62,29 +75,95 @@ class HomeScreen extends StatelessWidget {
 }
 
 List list = [
-  'Dua',
-  'Qalms',
-  'Namaz Alert',
-  'Qibla Finder',
-  'MP3 Quran',
-  'Tasbih'
+  CategoryItemModel('Dua', 'Dua', 'dua.webp'),
+  CategoryItemModel('Qalmas', 'Qalmas', 'qalma1.webp'),
+  CategoryItemModel('MP3 Quran', 'MP3 Quran', 'quran.webp'),
+  CategoryItemModel('Tasbih', 'Tasbih', 'tasbhi.webp'),
 ];
 
 class CategoryItemWidget extends StatelessWidget {
-  const CategoryItemWidget({super.key, required this.name, required this.onTap});
+  final CategoryItemModel model;
 
-  final String name;
+  const CategoryItemWidget(
+      {super.key, required this.model, required this.onTap});
+
   final Function() onTap;
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      onTap: onTap,
-      child: Container(
-          decoration: const BoxDecoration(
-              color: Colors.green,
-              borderRadius: BorderRadius.all(Radius.circular(10))),
-          child: Center(child: Text(name))),
+    return test(model: model, onTap: onTap);
+    //   InkWell(
+    //   onTap: onTap,
+    //   child: Container(
+    //     decoration: BoxDecoration(
+    //         image: DecorationImage(
+    //           image: AssetImage('assets/${model.imageAssetsName}'),
+    //           fit: BoxFit.fill,
+    //         ),
+    //         color: Colors.green,
+    //         borderRadius: const BorderRadius.all(Radius.circular(10))),
+    //     child: Row(
+    //       mainAxisAlignment: MainAxisAlignment.center,
+    //       crossAxisAlignment: CrossAxisAlignment.end,
+    //       children: [
+    //         Text(
+    //           model.name,
+    //           style: const TextStyle(color: Colors.white),
+    //         )
+    //       ],
+    //     ),
+    //   ),
+    // );
+  }
+}
+
+class test extends StatelessWidget {
+  const test({super.key, required this.model, required this.onTap});
+
+  final Function() onTap;
+  final CategoryItemModel model;
+
+  @override
+  Widget build(BuildContext context) {
+    final width = MediaQuery.of(context).size.width;
+    return Card(
+      margin: const EdgeInsets.all(8),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+      clipBehavior: Clip.hardEdge,
+      elevation: 16,
+      child: InkWell(
+        onTap: onTap,
+        child: Stack(
+          children: [
+            Image.asset('assets/${model.imageAssetsName}',
+              fit: BoxFit.cover,
+              height: 200,
+              width: width,
+            ),
+            Positioned(
+              left: 0,
+              bottom: 0,
+              right: 0,
+              child: Container(
+                color: Colors.black54,
+                // padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 44),
+                child: Text(
+                  model.name,
+                  maxLines: 1,
+                  textAlign: TextAlign.center,
+                  softWrap: true,
+                  overflow: TextOverflow.ellipsis,
+                  style: const TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                  ),
+                ),
+              ),
+            )
+          ],
+        ),
+      ),
     );
   }
 }

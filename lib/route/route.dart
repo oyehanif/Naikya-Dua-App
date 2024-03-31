@@ -1,5 +1,7 @@
-import 'package:dua/gsheet/dua_model.dart';
+import 'package:dua/hive/dua_hive_model.dart';
+import 'package:dua/ui/screens/QiblaFinderScreen.dart';
 import 'package:dua/ui/screens/TestScreen.dart';
+import 'package:dua/ui/screens/dua_list.dart';
 import 'package:dua/ui/screens/dua_list_screen.dart';
 import 'package:dua/ui/screens/language_selection_screen.dart';
 import 'package:dua/ui/screens/dua_detail.dart';
@@ -20,7 +22,7 @@ final GoRouter router = GoRouter(
       path: '/details',
       builder: (BuildContext context, GoRouterState state) {
         return DuaDetailScreen(
-          model: state.extra as duaModel,
+          model: state.extra as DuaHiveModel,
         );
       },
     ),
@@ -29,6 +31,13 @@ final GoRouter router = GoRouter(
       path: '/duaList',
       builder: (BuildContext context, GoRouterState state) {
         return const DuaListScreen();
+      },
+    ),
+    GoRoute(
+      name: 'qiblah',
+      path: '/qiblah',
+      builder: (BuildContext context, GoRouterState state) {
+        return const QiblahCompassWidget();
       },
     ),
     GoRoute(
