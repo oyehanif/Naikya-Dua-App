@@ -20,6 +20,7 @@ void main() async {
     await Hive.initFlutter();
     Hive.registerAdapter(DuaHiveModelAdapter());
     await Hive.openBox<DuaHiveModel>('dua');
+    await Hive.openBox<DuaHiveModel>('qalmas');
     runApp(const ProviderScope(child: MyApp()));
     test = await downloadFile();
   },catchUnhandledExceptions);

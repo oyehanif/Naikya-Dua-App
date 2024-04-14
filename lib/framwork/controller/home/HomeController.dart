@@ -13,18 +13,36 @@ class HomeController extends ChangeNotifier {
 
   HomeController(this.repo);
 
-  List<DuaHiveModel> productList = [];
+  List<DuaHiveModel> allDuaList = [];
+  List<DuaHiveModel> favDuaList = [];
+  List<DuaHiveModel> qalmasList = [];
 
   void getAllDua() async {
     final result = await repo.getDuaList();
-    productList.clear();
+    allDuaList.clear();
     result.when(
         success: (data) {
-          if (productList.isEmpty) {
-            productList.addAll(data as List<DuaHiveModel>);
+          if (allDuaList.isEmpty) {
+            allDuaList.addAll(data as List<DuaHiveModel>);
+            favDuaList = allDuaList.where((i) => i.isFav).toList();
             notifyListeners();
           }
           print("Here Data : ${data.length}");
+        },
+        failure: (error) {});
+  }
+
+
+  void getALlQalmas() async {
+    final result = await repo.getQalmasList();
+    qalmasList.clear();
+    result.when(
+        success: (data) {
+          if (qalmasList.isEmpty) {
+            qalmasList.addAll(data as List<DuaHiveModel>);
+            notifyListeners();
+          }
+          print("Here Data of qalmas: ${data.length}");
         },
         failure: (error) {});
   }

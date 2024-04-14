@@ -22,14 +22,17 @@ class DuaSheetsApi {
   static final _gsheet = GSheets(_credentials);
 
   static Worksheet? userSheet;
+  static Worksheet? qalmasSheet;
 
   static Future init() async {
     final spreadsheet = await _gsheet.spreadsheet(_spreadsSheetId);
     userSheet = await _getWorkSheet(spreadsheet, title: 'dua');
+    qalmasSheet = await _getWorkSheet(spreadsheet, title: 'qalmas');
 
     try {
       final firstRow = DuaSheetsFiledName.getDuas();
       userSheet!.values.insertRow(1, firstRow);
+      qalmasSheet!.values.insertRow(1, firstRow);
     } catch (e) {
       print('Here : Error From Fist Row $e');
     }
@@ -49,7 +52,14 @@ class DuaSheetsApi {
 
     final duas = await userSheet!.values.allRows();
     duas.removeAt(0);
-    print( "Here 1 : $duas");
     return duas.map(duaModel.fromJson).toList();
+  }
+
+  static Future<List<duaModel>> getAllQalmas() async {
+    if (qalmasSheet == null) return <duaModel>[];
+
+    final qalmas = await qalmasSheet!.values.allRows();
+    qalmas.removeAt(0);
+    return qalmas.map(duaModel.fromJson).toList();
   }
 }

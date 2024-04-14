@@ -69,10 +69,13 @@ class _MyCustomTabState extends State<MyCustomTab> {
                   ],
                 ),
               ),
-              const Expanded(
+              Expanded(
                 child: TabBarView(children: [
-                  AllDuaList(),
-                  MyTabTwo(),
+                  AllDuaList(isAllDua: true),
+                  AllDuaList(
+                    isAllDua: false,
+                  ),
+                  // MyTabTwo(),
                 ]),
               )
             ],
@@ -88,6 +91,8 @@ class MyTabTwo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Center(child: Text('Favorite '),);
+    return const Center(
+      child: Text('Favorite '),
+    );
   }
 }

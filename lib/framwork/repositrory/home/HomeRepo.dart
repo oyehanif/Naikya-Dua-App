@@ -5,4 +5,5 @@ import 'package:dua/utils/sheet_result.dart';
 abstract class HomeRepo {
   // factory HomeRepo() => HomeRepoImp();
   Future<SheetResult> getDuaList();
+  Future<SheetResult> getQalmasList();
 }

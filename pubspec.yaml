@@ -45,7 +45,6 @@ dependencies:
   audioplayers: ^5.2.1
   flutter_cache_manager: ^3.3.1
   flutter_native_splash: ^2.3.7
-  flutter_qiblah: ^2.2.1
   just_audio: ^0.9.36
   marquee: ^2.2.3
 

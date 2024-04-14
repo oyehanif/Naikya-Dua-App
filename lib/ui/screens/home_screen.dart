@@ -1,3 +1,4 @@
+import 'package:dua/utils/daily_qoutes_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -35,7 +36,7 @@ class HomeScreen extends StatelessWidget {
                       color: Colors.white,
                       borderRadius: BorderRadius.all(Radius.circular(10))),
                   margin: EdgeInsets.all(mediaQuery.width * .10),
-                  child: const Center(child: Text('Namaz qayaam karo !'))),
+                  child: Center(child: Text(getMyQuote()))),
             ),
             const Padding(
               padding: EdgeInsets.fromLTRB(24, 10, 0, 0),
@@ -54,8 +55,8 @@ class HomeScreen extends StatelessWidget {
                     onTap: () {
                       if (list[index].name == 'Dua') {
                         context.pushNamed('duaList');
-                      } else if (list[index].name == 'Qiblah Finder') {
-                        context.pushNamed('qiblah');
+                      } else if (list[index].name == 'Qalmas') {
+                        context.pushNamed('qalmas');
                       } else {
                         context.pushNamed('test', pathParameters: {
                           'test': list[index].name,
@@ -135,7 +136,8 @@ class test extends StatelessWidget {
         onTap: onTap,
         child: Stack(
           children: [
-            Image.asset('assets/${model.imageAssetsName}',
+            Image.asset(
+              'assets/${model.imageAssetsName}',
               fit: BoxFit.cover,
               height: 200,
               width: width,
