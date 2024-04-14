@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:dua/gsheet/dua_model.dart';
 import 'package:dua/gsheet/dua_sheets_api.dart';
+import 'package:dua/gsheet/quran_model.dart';
 import 'package:dua/utils/fetchAudio.dart';
 import 'package:flutter/material.dart';
 import 'package:dua/route/route.dart';
@@ -21,6 +22,7 @@ void main() async {
     Hive.registerAdapter(DuaHiveModelAdapter());
     await Hive.openBox<DuaHiveModel>('dua');
     await Hive.openBox<DuaHiveModel>('qalmas');
+    await Hive.openBox<QuranModel>('quran');
     runApp(const ProviderScope(child: MyApp()));
     test = await downloadFile();
   },catchUnhandledExceptions);

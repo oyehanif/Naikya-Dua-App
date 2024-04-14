@@ -4,6 +4,7 @@ import 'package:dua/ui/screens/dua_list.dart';
 import 'package:dua/ui/screens/language_selection_screen.dart';
 import 'package:dua/ui/screens/dua_detail.dart';
 import 'package:dua/ui/screens/qalmas_screen.dart';
+import 'package:dua/ui/screens/quran_para_list_screen.dart';
 import 'package:go_router/go_router.dart';
 import 'package:flutter/material.dart';
 import 'package:dua/ui/screens/home_screen.dart';
@@ -39,6 +40,14 @@ final GoRouter router = GoRouter(
         return const QalmasScreen();
       },
     ),
+    GoRoute(
+      name: 'quran',
+      path: '/quran',
+      builder: (BuildContext context, GoRouterState state) {
+        return const QuranParaListScreen();
+      },
+    ),
+
     GoRoute(
       name: 'test',
       path: '/test/:test',

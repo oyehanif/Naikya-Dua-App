@@ -6,6 +6,11 @@ class QalmasScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(appBar: AppBar(centerTitle: true,title: const Text('Qalmas')),body: AllDuaList(isAllDua: true,isQalmas: true,));
+    return Scaffold(
+        appBar: AppBar(centerTitle: true, title: const Text('Qalmas')),
+        body: AllDuaList(
+          isAllDua: true,
+          isQalmas: true,
+        ));
   }
 }

@@ -1,4 +1,5 @@
 import 'package:dua/gsheet/dua_model.dart';
+import 'package:dua/gsheet/quran_model.dart';
 import 'package:gsheets/gsheets.dart';
 
 class DuaSheetsApi {
@@ -21,18 +22,20 @@ class DuaSheetsApi {
 
   static final _gsheet = GSheets(_credentials);
 
-  static Worksheet? userSheet;
-  static Worksheet? qalmasSheet;
+  static Worksheet? userSheet, qalmasSheet, quranSheet;
 
   static Future init() async {
     final spreadsheet = await _gsheet.spreadsheet(_spreadsSheetId);
     userSheet = await _getWorkSheet(spreadsheet, title: 'dua');
     qalmasSheet = await _getWorkSheet(spreadsheet, title: 'qalmas');
+    quranSheet = await _getWorkSheet(spreadsheet, title: 'quran');
 
     try {
       final firstRow = DuaSheetsFiledName.getDuas();
+      final firstQuranRow = DuaSheetsQuranFiledName.getQuran();
       userSheet!.values.insertRow(1, firstRow);
       qalmasSheet!.values.insertRow(1, firstRow);
+      quranSheet!.values.insertRow(1, firstQuranRow);
     } catch (e) {
       print('Here : Error From Fist Row $e');
     }
@@ -61,5 +64,13 @@ class DuaSheetsApi {
     final qalmas = await qalmasSheet!.values.allRows();
     qalmas.removeAt(0);
     return qalmas.map(duaModel.fromJson).toList();
+  }
+
+  static Future<List<QuranModel>> getAllQuran() async {
+    if (quranSheet == null) return <QuranModel>[];
+
+    final qalmas = await quranSheet!.values.allRows();
+    qalmas.removeAt(0);
+    return qalmas.map(QuranModel.fromJson).toList();
   }
 }

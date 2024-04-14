@@ -1,8 +1,5 @@
 import 'dart:convert';
 
-import 'package:dua/hive/dua_hive_model.dart';
-import 'package:hive/hive.dart';
-
 
 class duaModel {
 

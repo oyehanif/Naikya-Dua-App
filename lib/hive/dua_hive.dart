@@ -2,6 +2,7 @@ import 'dart:ffi';
 
 import 'package:dua/gsheet/dua_model.dart';
 import 'package:dua/gsheet/dua_sheets_api.dart';
+import 'package:dua/gsheet/quran_model.dart';
 import 'package:gsheets/gsheets.dart';
 import 'package:hive/hive.dart';
 
@@ -16,10 +17,12 @@ class DuaHive {
 
   static var duaBox = Hive.box<DuaHiveModel>('dua');
   static var qalmasBox = Hive.box<DuaHiveModel>('qalmas');
+  static var quranBox = Hive.box<QuranModel>('quran');
 
   // static var userBox = Hive.box<List<DuaHiveModel>>('dua');
   static List<DuaHiveModel> duaList = [];
   static List<DuaHiveModel> qalmasList = [];
+  static List<QuranModel> quranList = [];
 
   static void saveDuaList(List<DuaHiveModel> values, {bool isFav = false}) {
       duaBox.addAll(values);
@@ -60,4 +63,19 @@ class DuaHive {
     return qalmasList;
   }
 
+
+  ///Quran Hive Methods
+
+  static void saveQuranList(List<QuranModel> values, {bool isFav = false}) {
+    quranBox.addAll(values);
+  }
+
+  static List<QuranModel> getQuranList() {
+    quranList = quranBox.values.toList().asMap().entries.map((e){
+      e.value.no = e.key;
+      return e.value;
+    }).toList();
+    // duaList = duaBox.get(key, defaultValue: []).cast<DuaHiveModel>();
+    return quranList;
+  }
 }

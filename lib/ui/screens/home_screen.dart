@@ -1,8 +1,8 @@
+import 'package:dua/models/CategoryItemModel.dart';
 import 'package:dua/utils/daily_qoutes_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../models/CategoryItemModel.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -57,6 +57,8 @@ class HomeScreen extends StatelessWidget {
                         context.pushNamed('duaList');
                       } else if (list[index].name == 'Qalmas') {
                         context.pushNamed('qalmas');
+                      } else if (list[index].name == 'MP3 Quran') {
+                        context.pushNamed('quran');
                       } else {
                         context.pushNamed('test', pathParameters: {
                           'test': list[index].name,
