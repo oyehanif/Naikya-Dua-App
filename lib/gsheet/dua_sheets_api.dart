@@ -26,9 +26,11 @@ class DuaSheetsApi {
 
   static Future init() async {
     final spreadsheet = await _gsheet.spreadsheet(_spreadsSheetId);
-    userSheet = await _getWorkSheet(spreadsheet, title: 'dua');
-    qalmasSheet = await _getWorkSheet(spreadsheet, title: 'qalmas');
-    quranSheet = await _getWorkSheet(spreadsheet, title: 'quran');
+    if(userSheet ==null || qalmasSheet ==null || quranSheet == null){
+      userSheet = await _getWorkSheet(spreadsheet, title: 'dua');
+      qalmasSheet = await _getWorkSheet(spreadsheet, title: 'qalmas');
+      quranSheet = await _getWorkSheet(spreadsheet, title: 'quran');
+    }
 
     try {
       final firstRow = DuaSheetsFiledName.getDuas();

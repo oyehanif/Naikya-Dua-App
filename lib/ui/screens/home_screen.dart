@@ -59,6 +59,8 @@ class HomeScreen extends StatelessWidget {
                         context.pushNamed('qalmas');
                       } else if (list[index].name == 'MP3 Quran') {
                         context.pushNamed('quran');
+                      }else if (list[index].name == 'Tasbih') {
+                        context.pushNamed('tasbih');
                       } else {
                         context.pushNamed('test', pathParameters: {
                           'test': list[index].name,

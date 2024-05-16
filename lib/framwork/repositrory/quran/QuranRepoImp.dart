@@ -7,6 +7,7 @@ import 'package:dua/utils/sheet_result.dart';
 class QuranRepoImp extends QuranRepo {
   @override
   Future<SheetResult> getQuranList() async {
+    await DuaSheetsApi.init();
     try {
       List<QuranModel> list = DuaHive.getQuranList();
       if (list.isEmpty) {

@@ -209,6 +209,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.0.3"
+  clay_containers:
+    dependency: "direct main"
+    description:
+      name: clay_containers
+      sha256: "84039b8afd1ab168caaefee862611810add7e77a6c6d03d02788a56bd60e76c1"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.3.4"
   clock:
     dependency: transitive
     description:
@@ -233,6 +241,22 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.18.0"
+  connectivity_plus:
+    dependency: "direct main"
+    description:
+      name: connectivity_plus
+      sha256: db7a4e143dc72cc3cb2044ef9b052a7ebfe729513e6a82943bc3526f784365b8
+      url: "https://pub.dev"
+    source: hosted
+    version: "6.0.3"
+  connectivity_plus_platform_interface:
+    dependency: transitive
+    description:
+      name: connectivity_plus_platform_interface
+      sha256: b6a56efe1e6675be240de39107281d4034b64ac23438026355b4234042a35adb
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.0.0"
   convert:
     dependency: transitive
     description:
@@ -281,6 +305,22 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.3.6"
+  dbus:
+    dependency: transitive
+    description:
+      name: dbus
+      sha256: "365c771ac3b0e58845f39ec6deebc76e3276aa9922b0cc60840712094d9047ac"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.7.10"
+  digital_lcd_number:
+    dependency: "direct main"
+    description:
+      name: digital_lcd_number
+      sha256: "4beb7ff89cb0fb9aeaa8173e603b64daa49c260d3825d8dddd5fce1c04ef0e92"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.1.2"
   fading_edge_scrollview:
     dependency: transitive
     description:
@@ -712,6 +752,22 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.0.5"
+  neumorphic_button:
+    dependency: "direct main"
+    description:
+      name: neumorphic_button
+      sha256: "6ebc849871592e4081fb80cddad35551142e1ca0a50703136d5b2f4422ffe12f"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.0.1+2"
+  nm:
+    dependency: transitive
+    description:
+      name: nm
+      sha256: "2c9aae4127bdc8993206464fcc063611e0e36e72018696cd9631023a31b24254"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.5.0"
   package_config:
     dependency: transitive
     description:
@@ -904,6 +960,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.3.0"
+  segment_display:
+    dependency: "direct main"
+    description:
+      name: segment_display
+      sha256: "27efa878e43c788428c5a9199946589c0a67289d11297280d16caa630321dd62"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.5.0"
   share_plus:
     dependency: "direct main"
     description:

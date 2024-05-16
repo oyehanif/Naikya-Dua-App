@@ -26,7 +26,7 @@ class QuranModel {
       tarjum: json[DuaSheetsFiledName.tarjuma]);*/
 
   factory QuranModel.fromJson(List<dynamic> json) {
-    return QuranModel(no: jsonDecode(json[0]), name: json[1], link: json[1]);
+    return QuranModel(no: jsonDecode(json[0]), name: json[1], link: json[2]);
   }
 }
 
@@ -35,5 +35,5 @@ class DuaSheetsQuranFiledName {
   static const String name = 'name';
   static const String link = 'link';
 
-  static List<String> getQuran() => [no, link];
+  static List<String> getQuran() => [no, name,link];
 }

@@ -38,7 +38,7 @@ class _QuranParaListScreenState extends ConsumerState<QuranParaListScreen> {
                   no: index + 1,
                   name: result[index].name,
                   onTap: () {
-                    context.pushNamed('youtubePlayer');
+                    context.pushNamed('youtubePlayer',extra: result[index]);
                   },
                 ),
                 itemCount: result.length,

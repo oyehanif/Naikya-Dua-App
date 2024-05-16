@@ -17,14 +17,14 @@ late String test;
 void main() async {
   runZonedGuarded(() async {
     WidgetsFlutterBinding.ensureInitialized();
-    await DuaSheetsApi.init();
     await Hive.initFlutter();
     Hive.registerAdapter(DuaHiveModelAdapter());
     await Hive.openBox<DuaHiveModel>('dua');
     await Hive.openBox<DuaHiveModel>('qalmas');
     await Hive.openBox<QuranModel>('quran');
     runApp(const ProviderScope(child: MyApp()));
-    test = await downloadFile();
+
+    // test = await downloadFile();
   },catchUnhandledExceptions);
 }
 

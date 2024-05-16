@@ -1,3 +1,4 @@
+import 'package:dua/gsheet/quran_model.dart';
 import 'package:dua/hive/dua_hive_model.dart';
 import 'package:dua/ui/screens/TestScreen.dart';
 import 'package:dua/ui/screens/dua_list.dart';
@@ -5,6 +6,7 @@ import 'package:dua/ui/screens/language_selection_screen.dart';
 import 'package:dua/ui/screens/dua_detail.dart';
 import 'package:dua/ui/screens/qalmas_screen.dart';
 import 'package:dua/ui/screens/quran_para_list_screen.dart';
+import 'package:dua/ui/screens/tasbhi_screen.dart';
 import 'package:dua/ui/screens/youtube_player_screen.dart';
 import 'package:go_router/go_router.dart';
 import 'package:flutter/material.dart';
@@ -70,7 +72,17 @@ final GoRouter router = GoRouter(
       name: 'youtubePlayer',
       path: '/youtubePlayer',
       builder: (BuildContext context, GoRouterState state) {
-        return const YoutubePlayerScreen(
+        return YoutubePlayerScreen(
+          quranModel: state.extra as QuranModel,
+        );
+      },
+    ),
+
+    GoRoute(
+      name: 'tasbih',
+      path: '/tasbih',
+      builder: (BuildContext context, GoRouterState state) {
+        return const TasbihScreen(
         );
       },
     ),

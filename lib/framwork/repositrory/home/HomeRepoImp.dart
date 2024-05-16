@@ -8,6 +8,7 @@ class HomeRepoImp implements HomeRepo {
   @override
   Future<SheetResult> getDuaList() async {
     try {
+      await DuaSheetsApi.init();
       List<DuaHiveModel> list  = DuaHive.getAllDuas();
       if (list.isEmpty) {
         var data = await DuaSheetsApi.getAllDua();
@@ -27,6 +28,7 @@ class HomeRepoImp implements HomeRepo {
 
   @override
   Future<SheetResult> getQalmasList() async {
+    await DuaSheetsApi.init();
     try {
       List<DuaHiveModel> list  = DuaHive.getQalmasDuas();
       if (list.isEmpty) {
