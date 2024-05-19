@@ -1,13 +1,13 @@
 flutter_native_splash:
-  color: "#FFFFFF"
-  color_dark: "#272727"
+  color: "#7ED957"
+  color_dark: "#7ED957"
   image: assets/naikyalogo.png
-  image_dark: assets/img.png
+  image_dark: assets/naikyalogo.png
 
   android_12:
-    color: "#FFFFFF"
-    color_dark: "#272727"
+    color: "#7ED957"
+    color_dark: "#7ED957"
     image: assets/naikyalogo.png
-    image_dark: assets/img.png
+    image_dark: assets/naikyalogo.png
 
   web: false

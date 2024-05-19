@@ -10,6 +10,7 @@ import 'dua_hive_model.dart';
 
 const key = 'categoryKey';
 const favKey = 'FavKey';
+const countKey = 'CountKey';
 
 class DuaHive {
   DuaHive._();
@@ -18,6 +19,7 @@ class DuaHive {
   static var duaBox = Hive.box<DuaHiveModel>('dua');
   static var qalmasBox = Hive.box<DuaHiveModel>('qalmas');
   static var quranBox = Hive.box<QuranModel>('quran');
+  static var tasbhiCount = Hive.box<int>('tasbhi');
 
   // static var userBox = Hive.box<List<DuaHiveModel>>('dua');
   static List<DuaHiveModel> duaList = [];
@@ -78,4 +80,14 @@ class DuaHive {
     // duaList = duaBox.get(key, defaultValue: []).cast<DuaHiveModel>();
     return quranList;
   }
+
+  ///Tasbhi Count
+  static void saveCount(int count){
+    tasbhiCount.put(countKey,count);
+    print(count);
+  }
+
+  static int getCount() => tasbhiCount.get(countKey) ?? 0;
+
+
 }

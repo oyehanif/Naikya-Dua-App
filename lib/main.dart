@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:ffi';
 
 import 'package:dua/gsheet/dua_model.dart';
 import 'package:dua/gsheet/dua_sheets_api.dart';
@@ -6,25 +7,27 @@ import 'package:dua/gsheet/quran_model.dart';
 import 'package:dua/utils/fetchAudio.dart';
 import 'package:flutter/material.dart';
 import 'package:dua/route/route.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'hive/dua_hive_model.dart';
+import 'hive/dua_hive_model.dart';import 'package:flutter_native_splash/flutter_native_splash.dart';
 
 late String test;
 
 void main() async {
   runZonedGuarded(() async {
-    WidgetsFlutterBinding.ensureInitialized();
+    WidgetsBinding widgetsBinding =  WidgetsFlutterBinding.ensureInitialized();
+    FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
     await Hive.initFlutter();
     Hive.registerAdapter(DuaHiveModelAdapter());
     await Hive.openBox<DuaHiveModel>('dua');
     await Hive.openBox<DuaHiveModel>('qalmas');
     await Hive.openBox<QuranModel>('quran');
+    await Hive.openBox<int>('tasbhi');
     runApp(const ProviderScope(child: MyApp()));
-
-    // test = await downloadFile();
+    FlutterNativeSplash.remove();
   },catchUnhandledExceptions);
 }
 

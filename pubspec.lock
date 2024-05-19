@@ -209,14 +209,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.0.3"
-  clay_containers:
-    dependency: "direct main"
-    description:
-      name: clay_containers
-      sha256: "84039b8afd1ab168caaefee862611810add7e77a6c6d03d02788a56bd60e76c1"
-      url: "https://pub.dev"
-    source: hosted
-    version: "0.3.4"
   clock:
     dependency: transitive
     description:
@@ -313,22 +305,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.7.10"
-  digital_lcd_number:
-    dependency: "direct main"
-    description:
-      name: digital_lcd_number
-      sha256: "4beb7ff89cb0fb9aeaa8173e603b64daa49c260d3825d8dddd5fce1c04ef0e92"
-      url: "https://pub.dev"
-    source: hosted
-    version: "0.1.2"
-  fading_edge_scrollview:
-    dependency: transitive
-    description:
-      name: fading_edge_scrollview
-      sha256: c25c2231652ce774cc31824d0112f11f653881f43d7f5302c05af11942052031
-      url: "https://pub.dev"
-    source: hosted
-    version: "3.0.0"
   fake_async:
     dependency: transitive
     description:
@@ -712,14 +688,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.2.0"
-  marquee:
-    dependency: "direct main"
-    description:
-      name: marquee
-      sha256: "4b5243d2804373bdc25fc93d42c3b402d6ec1f4ee8d0bb72276edd04ae7addb8"
-      url: "https://pub.dev"
-    source: hosted
-    version: "2.2.3"
   matcher:
     dependency: transitive
     description:
@@ -752,14 +720,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.0.5"
-  neumorphic_button:
-    dependency: "direct main"
-    description:
-      name: neumorphic_button
-      sha256: "6ebc849871592e4081fb80cddad35551142e1ca0a50703136d5b2f4422ffe12f"
-      url: "https://pub.dev"
-    source: hosted
-    version: "0.0.1+2"
   nm:
     dependency: transitive
     description:
@@ -1141,6 +1101,30 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.2.2"
+  url_launcher:
+    dependency: "direct main"
+    description:
+      name: url_launcher
+      sha256: "6ce1e04375be4eed30548f10a315826fd933c1e493206eab82eed01f438c8d2e"
+      url: "https://pub.dev"
+    source: hosted
+    version: "6.2.6"
+  url_launcher_android:
+    dependency: transitive
+    description:
+      name: url_launcher_android
+      sha256: "360a6ed2027f18b73c8d98e159dda67a61b7f2e0f6ec26e86c3ada33b0621775"
+      url: "https://pub.dev"
+    source: hosted
+    version: "6.3.1"
+  url_launcher_ios:
+    dependency: transitive
+    description:
+      name: url_launcher_ios
+      sha256: "7068716403343f6ba4969b4173cbf3b84fc768042124bc2c011e5d782b24fe89"
+      url: "https://pub.dev"
+    source: hosted
+    version: "6.3.0"
   url_launcher_linux:
     dependency: transitive
     description:
@@ -1149,6 +1133,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.1.1"
+  url_launcher_macos:
+    dependency: transitive
+    description:
+      name: url_launcher_macos
+      sha256: "9a1a42d5d2d95400c795b2914c36fdcb525870c752569438e4ebb09a2b5d90de"
+      url: "https://pub.dev"
+    source: hosted
+    version: "3.2.0"
   url_launcher_platform_interface:
     dependency: transitive
     description:

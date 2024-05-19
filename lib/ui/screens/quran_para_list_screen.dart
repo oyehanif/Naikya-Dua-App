@@ -1,11 +1,7 @@
-import 'dart:ffi';
-
-import 'package:dua/framwork/controller/home/HomeController.dart';
 import 'package:dua/framwork/controller/quran/QuranController.dart';
-import 'package:dua/route/route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:go_router/go_router.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class QuranParaListScreen extends ConsumerStatefulWidget {
   const QuranParaListScreen({super.key});
@@ -38,7 +34,8 @@ class _QuranParaListScreenState extends ConsumerState<QuranParaListScreen> {
                   no: index + 1,
                   name: result[index].name,
                   onTap: () {
-                    context.pushNamed('youtubePlayer',extra: result[index]);
+                    _launchUrl(Uri.parse(result[index].link));
+                    // context.pushNamed('youtubePlayer',extra: result[index]);
                   },
                 ),
                 itemCount: result.length,
@@ -46,7 +43,14 @@ class _QuranParaListScreenState extends ConsumerState<QuranParaListScreen> {
       ),
     );
   }
+  Future<void> _launchUrl(Uri url) async {
+    if (!await launchUrl(url)) {
+      throw Exception('Could not launch $url');
+    }
+  }
 }
+
+
 
 class QuranItem extends StatelessWidget {
   QuranItem(
